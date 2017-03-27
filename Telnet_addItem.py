@@ -45,3 +45,4 @@ if __name__=='__main__':
 
     mainaddItem(goods_id_one,goods_id_two,add_goods_number)
     tn.close()
+ 
