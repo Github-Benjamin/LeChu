@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import telnetlib
+import time
 
-Host = '115.xxx.xx.xx'
-Port = 'xxxx'
+Host = '115.182.xx.xx'
+Port = 'xxxxxx'
 username = 'admin'
 password = 'admin'
 
-tn = telnetlib.Telnet(Host, port=xxxx, timeout=10)
+tn = telnetlib.Telnet(Host, port=38080, timeout=10)
 tn.set_debuglevel(2)
 
 def telent_connect(user):
@@ -34,15 +35,21 @@ def mainaddItem(goods_id_one,goods_id_two,add_goods_number):
             addItem(user,i,goods_nubmer)
 
 if __name__=='__main__':
-    user = 'test3273'
+
+    time_one = time.time()
+
+    user = '{userame}'
     telent_connect(user)
 
-    goods_id_one = 1001
+    goods_id_one = 31
     goods_id_two = None
-    goods_nubmer = 10
+    goods_nubmer = 30
 
-    add_goods_number = 1
+    add_goods_number = 3
 
     mainaddItem(goods_id_one,goods_id_two,add_goods_number)
     tn.close()
- 
+
+    time_two = time.time()
+    time_three = time_two-time_one
+    print '\nTiem: %s S'%round(time_three,2)
