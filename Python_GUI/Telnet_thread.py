@@ -19,14 +19,6 @@ def addItem(user,goods_id,goods_number):
     #tn.read_until('add item success.')
     tn.write('addItem %s %s %s\n'%(user,goods_id,goods_number))
 
-def mainaddItem(user,goods_id_one,goods_id_two,goods_nubmer,add_goods_number):
-    if goods_id_two ==None :
-        for i in range(add_goods_number):
-            addItem(user,goods_id_one,goods_nubmer)
-    else:
-        for i in range(goods_id_one,goods_id_two):
-            addItem(user,i,goods_nubmer)
-
 def AddThread(user,goods_id,goods_number):
     Athread = threading.Thread(target=addItem,args=(user,goods_id,goods_number))
     Threads.append(Athread)
@@ -39,7 +31,6 @@ def clean_data():
     add_number=None
 
 telent_connect()
-
 def telnet_lib():
     Threads = []
     global Threads
