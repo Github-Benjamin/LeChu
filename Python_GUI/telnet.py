@@ -8,7 +8,7 @@ username = 'admin'
 password = 'admin'
 
 def telnet():
-    tn = telnetlib.Telnet(Host, port=38080, timeout=10)
+    tn = telnetlib.Telnet(Host, port=xxxxx, timeout=10)
     global tn
     tn.set_debuglevel(2)
 
