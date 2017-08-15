@@ -1,0 +1,76 @@
+<!--/*-->
+<!--* Created by Benjamin on 2017/8/9.-->
+<!--*/-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benjamin的测试</title>
+    <style>
+        .box{
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <b>添加物品</b>
+        <br>
+        <input type="text" name="accountName"  id="accountName" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" required="required" maxlength="8" placeholder="账号名称：">
+        <br>
+        <input type="text" name="itemTemplateId"  id="itemTemplateId1" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" required="required" maxlength="8" placeholder="物品ID1：">
+        <br>
+        <input type="text" name="itemTemplateId"  id="itemTemplateId2" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" required="required" maxlength="8" placeholder="物品ID2：">
+        <br>
+        <input type="text" name="count"  id="count" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" required="required" maxlength="8" placeholder="物品数量">
+        <br>
+        <input type="submit"  class="Benjamin" value="提交">
+    </div>
+
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+
+        $('.Benjamin').click(function(){
+
+            var accountName=document.getElementById("accountName").value;
+            var itemTemplateId1=document.getElementById("itemTemplateId1").value;
+            var itemTemplateId2=document.getElementById("itemTemplateId2").value;
+            var count=document.getElementById("count").value;
+
+            itemTemplateId1 = parseInt(itemTemplateId1);
+            itemTemplateId2 = parseInt(itemTemplateId2);
+            itemTemplateId3 = itemTemplateId2+1;
+
+            if (itemTemplateId2) {
+                if (itemTemplateId2 > itemTemplateId1) {
+                    for (var i = itemTemplateId1; i < itemTemplateId3; i++) {
+                        $.getJSON('http://115.182.62.13:38300/manage/addItem', {
+                            accountName: accountName,
+                            itemTemplateId: i,
+                            count: count
+                        }, function (data, textStatus, jqXHR) {
+                        })
+                    }
+                    return;
+                } else {
+                    alert('输入条件错误，物品1-2之间不是递增数列！');
+                    return;
+                }
+            } else {
+                $.getJSON('http://115.182.xx.xxx:xxxx/manage/addItem', {
+                    accountName: accountName,
+                    itemTemplateId: itemTemplateId1,
+                    count: count
+                }, function (data, textStatus, jqXHR) {
+                })
+                return;
+            }
+        });
+
+    </script>
+
+</body>
+</html>
